@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/plugins/maven-changes-plugin/xsd/changes-1.0.0.xsd">
+
+	<properties>
+		<title>jaev - Advanced e-mail validation with Java.</title>
+		<author>Niclas Meier</author>
+	</properties>
+	<body>
+
+		<release version="1.1.1" date="" description="Enhancement and bugfix release">
+
+		</release>
+
+		<release version="0.9.2" date="" description="Enhancement and bugfix release">
+			<action dev="niclas" type="add"><![CDATA[ 
+				Introduced NonQuery to prefent SMTP account querying.
+			]]></action>
+			<action dev="niclas" type="fix"><![CDATA[ 
+				Fixed some minor bugs
+			]]></action>
+			<action dev="niclas" type="add"><![CDATA[ 
+				Added some dedicated parser factory unit tests
+			]]></action>
+			<action dev="niclas" type="update"><![CDATA[ 
+				Replaced log4j logging implmenetation (for sl4j) with logback.
+			]]></action>
+			<action dev="niclas" type="update"><![CDATA[ 
+				Updated perl inspired unit tests.
+			]]></action>
+			<action dev="niclas" type="add"><![CDATA[ 
+				Added ValidatorService for integration into the spring framework
+			]]></action>
+			<action dev="niclas" type="add"><![CDATA[ 
+				Added JaevValidatorFacory for integration into BlazeDS
+			]]></action>
+			<action dev="niclas" type="add"><![CDATA[ 
+				ExternalResult, ExternalResultCode and ExternalValidator in intgration package to provide a more easy transfer.
+			]]></action>
+			<action dev="niclas" type="fix"><![CDATA[ 
+				Fixed bad abort condition in BasicValidator
+			]]></action>
+			<action dev="niclas" type="fix"><![CDATA[ 
+				Fixed name of ValidatorResultCode.properties
+			]]></action>
+		</release>
+
+		<release version="0.9.1" date="" description="Projekt infrastructure enhancement release">
+			<action dev="niclas" type="add"><![CDATA[ 
+				Added maven build and report process
+			]]></action>
+		</release>
+
+		<release version="0.9.0" date="" description="First release">
+			<action dev="niclas" type="add"><![CDATA[ 
+				Initial version
+			]]></action>
+		</release>
+	</body>
+
+</document>

@@ -1,0 +1,28 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>tar.gz</format>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>true</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>README*</include>
+        <include>LICENSE*</include>
+        <include>NOTICE*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target/</directory>
+      <outputDirectory>lib</outputDirectory>
+      <includes>
+        <include>jaev-${version}.jar</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target/apidocs</directory>
+      <outputDirectory>apidocs</outputDirectory>
+    </fileSet>    
+  </fileSets>
+</assembly>
