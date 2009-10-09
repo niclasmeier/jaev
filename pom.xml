@@ -315,12 +315,12 @@
 		<repository>
 			<id>private-maven</id>
 			<name>jaev private repository</name>
-			<url>dav:http://niclas-meier.de:81/jaev/maven2</url>
+			<url>scp://www.nicl.net/srv/www/apache2/nicl-net/htdocs/jaev/maven2</url>
 		</repository>
 		<site>
 			<id>private-site</id>
 			<name>jaev private site repository</name>
-			<url>dav:http://niclas-meier.de:81/jaev/site</url>
+			<url>scp://www.nicl.net/srv/www/apache2/nicl-net/htdocs/jaev/site</url>
 		</site>
 	</distributionManagement>
 
