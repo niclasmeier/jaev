@@ -1,0 +1,21 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+    <head>
+        <title>jaev Tapetry 5 example page</title>
+    </head>
+    <body>
+        <h1>jaev Tapetry 5 example page</h1>
+
+        <p> This is an example page for an tapestry application unsing the jaev framwork. Just enter an e-mail address: </p>
+		
+		<t:form t:id="emailForm">
+			<t:errors />
+			<p> <t:label t:for="email">E-Mail</t:label> 
+			
+			<input type="text" t:type="textfield" 
+								t:id="email" t:value="email"/>
+			 </p>
+			<input type="submit" t:type="submit" t:id="submitButton" value="press me"/>
+		</t:form>
+        
+    </body>
+</html>

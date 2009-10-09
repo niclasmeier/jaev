@@ -1,0 +1,8 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+    <head>
+        <title>jaev Tapetry 5 example page</title>
+    </head>
+    <body>
+        <a t:type="pagelink" t:page="index">Link</a>        
+    </body>
+</html>

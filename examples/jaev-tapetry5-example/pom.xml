@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.googlecode.jaev</groupId>
+	<artifactId>jaev-tapestry5-example</artifactId>
+	<version>1.1.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>jaev-tapestry5-example</name>
+	<description>Tapestry 5 example application</description>
+
+	<parent>
+		<groupId>com.googlecode.jaev</groupId>
+		<artifactId>jaev</artifactId>
+		<version>1.1.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<tapestry-release-version>5.1.0.5</tapestry-release-version>
+	</properties>
+
+	<scm>
+		<connection>scm:git:git://github.com/niclasmeier/jaev</connection>
+		<developerConnection>scm:git:git://github.com/niclasmeier/jaev</developerConnection>
+		<url>http://github.com/niclasmeier/jaev</url>
+	</scm>
+
+	<build>
+		<finalName>${project.name}</finalName>
+		<plugins>
+
+			<!-- Run the application using "mvn jetty:run" -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.9</version>
+				<configuration>
+					<!-- Log to the console. -->
+					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+						<!--
+							This doesn't do anything for Jetty, but is a workaround for a
+							Maven bug that prevents the requestLog from being set.
+						-->
+						<append>true</append>
+					</requestLog>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagBase>https://jaev.googlecode.com/svn/tags/exaples/jaev-tapetry5-example</tagBase>
+					<preparationGoals>clean verify</preparationGoals>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-core</artifactId>
+			<version>${tapestry-release-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.1</version>
+			<classifier>jdk15</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.jaev</groupId>
+			<artifactId>validation</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+
+
+	<repositories>
+		<!--
+			This can be commented out when the tapestry-release-version is a not
+			a snapshot. The non-snapshot Tapestry artifacts are distributed
+			through the central repository at ibiblio.
+		-->
+
+		<repository>
+			<id>tapestry-snapshots</id>
+			<url>http://tapestry.formos.com/maven-snapshot-repository/</url>
+		</repository>
+
+		<repository>
+			<id>codehaus.snapshots</id>
+			<url>http://snapshots.repository.codehaus.org</url>
+		</repository>
+		<repository>
+			<id>OpenQA_Release</id>
+			<name>OpenQA Release Repository</name>
+			<url>http://archiva.openqa.org/repository/releases/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+
+		<!--
+			As above, this can be commented out when access to the snapshot
+			version of a Tapestry Maven plugin is not required.
+		-->
+		<pluginRepository>
+			<id>tapestry-snapshots</id>
+			<url>http://tapestry.formos.com/maven-snapshot-repository/</url>
+		</pluginRepository>
+
+
+	</pluginRepositories>
+
+</project>

@@ -20,6 +20,7 @@
 	<modules>
 		<module>validation</module>
 		<module>examples/jaev-jsf-example</module>
+		<module>examples/jaev-tapetry5-example</module>
 	</modules>
 
 	<properties>
