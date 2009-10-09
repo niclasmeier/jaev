@@ -29,8 +29,7 @@ public interface Cache {
 	/**
 	 * Get cache entry
 	 * 
-	 * @param domainName
-	 *            The domain name
+	 * @param domainName The domain name
 	 * @return An cache entry
 	 */
 	public Entry get(String domainName);

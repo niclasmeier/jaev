@@ -22,6 +22,9 @@ import static com.googlecode.jaev.ValidatorResultCode.NO_MTA_ACCESSIBLE;
 import static com.googlecode.jaev.ValidatorResultCode.NO_MX_RECORDS_FOUND;
 import static com.googlecode.jaev.Validity.INVALID;
 import static com.googlecode.jaev.Validity.SYNTAX;
+import static com.googlecode.jaev.dns.ResouceRecord.Type.A;
+import static com.googlecode.jaev.dns.ResouceRecord.Type.AAAA;
+import static com.googlecode.jaev.dns.ResouceRecord.Type.CNAME;
 import static com.googlecode.jaev.dns.ResouceRecord.Type.MX;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -61,179 +64,194 @@ import com.googlecode.jaev.smtp.NonQuery;
  */
 public final class BasicValidator extends AbstractValidator {
 
-	private static final Logger LOG = LoggerFactory.getLogger(BasicValidator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BasicValidator.class);
 
-	private final Resolver resolver;
+    private final Resolver resolver;
 
-	private final MailAddress fromAddress;
+    private final MailAddress fromAddress;
 
-	private final AccountQuery addressQuery;
+    private final AccountQuery addressQuery;
 
-	public BasicValidator(MailAddressFactory mailAddressFactory, Resolver resolver, String fromAddress)
-			throws MailParseException {
-		this(mailAddressFactory, resolver, new BasicAccountQuery(10, SECONDS), fromAddress);
-	}
+    public BasicValidator(MailAddressFactory mailAddressFactory, Resolver resolver, String fromAddress)
+            throws MailParseException {
+        this(mailAddressFactory, resolver, new BasicAccountQuery(10, SECONDS), fromAddress);
+    }
 
-	public BasicValidator(MailAddressFactory mailAddressFactory, Resolver resolver, AccountQuery addressQuery,
-			String fromAddress) throws MailParseException {
-		this(mailAddressFactory, resolver, addressQuery, mailAddressFactory.create(fromAddress));
-	}
+    public BasicValidator(MailAddressFactory mailAddressFactory, Resolver resolver, AccountQuery addressQuery,
+            String fromAddress) throws MailParseException {
+        this(mailAddressFactory, resolver, addressQuery, mailAddressFactory.create(fromAddress));
+    }
 
-	public BasicValidator(MailAddressFactory mailAddressFactory, Resolver resolver, AccountQuery addressQuery,
-			MailAddress fromAddress) {
-		super(mailAddressFactory);
-		this.resolver = resolver;
-		this.fromAddress = fromAddress;
-		this.addressQuery = addressQuery != null ? addressQuery : NonQuery.getInstance();
-	}
+    public BasicValidator(MailAddressFactory mailAddressFactory, Resolver resolver, AccountQuery addressQuery,
+            MailAddress fromAddress) {
+        super(mailAddressFactory);
+        this.resolver = resolver;
+        this.fromAddress = fromAddress;
+        this.addressQuery = addressQuery != null ? addressQuery : NonQuery.getInstance();
+    }
 
-	/**
-	 * This private method to retrieve a list of <code>InetAddress</code>s for
-	 * all MX hosts known for a domain
-	 * 
-	 * @param domain
-	 *            The domain to find the MX addresses for
-	 * @return A list of <code>InetAddress</code>
-	 * @throws ResolverException
-	 *             If a problem during MX record retrival occurs
-	 */
-	private List<InetAddress> retrieveMxRecords(String domain) throws ResolverException {
-		// ask the resolver for the resource records
-		List<ResouceRecord> recordList = this.resolver.resolve(domain, MX);
+    /**
+     * This private method to retrieve a list of <code>InetAddress</code>s for
+     * all MX hosts known for a domain
+     * 
+     * @param domain
+     *            The domain to find the MX addresses for
+     * @return A list of <code>InetAddress</code>
+     * @throws ResolverException
+     *             If a problem during MX record retrival occurs
+     */
+    private List<InetAddress> retrieveMxRecords(String domain) throws ResolverException {
+        // ask the resolver for the resource records
+        List<ResouceRecord> recordList = resolver.resolve(domain, MX);
 
-		List<InetAddress> result = new java.util.ArrayList<InetAddress>(recordList.size());
+        if (recordList.isEmpty()) {
+            List<ResouceRecord> cNameList = resolver.resolve(domain, CNAME);
+            if (!cNameList.isEmpty()) {
+                List<InetAddress> cnameResult = new java.util.ArrayList<InetAddress>();
+                for (ResouceRecord cNameRecord : cNameList) {
+                    try {
+                        cnameResult.addAll(retrieveMxRecords(cNameRecord.getValue()));
+                    } catch (ResolverException re) {
+                        LOG.trace("An error occured while resolving MX records for CNAME enntry '"
+                                + cNameRecord.getValue() + "'.", re);
+                    }
+                }
+                return cnameResult;
+            }
+            recordList = resolver.resolve(domain, A);
+            if (recordList.isEmpty()) {
+                recordList = resolver.resolve(domain, AAAA);
+            }
+        }
 
-		for (ResouceRecord record : recordList) {
-			try {
-				// create the InetAddress instance
-				result.add(InetAddress.getByName(record.getValue()));
-			}
-			catch (UnknownHostException e) {
+        List<InetAddress> result = new java.util.ArrayList<InetAddress>(recordList.size());
 
-				// and ignore the records with unknown hosts
-				LOG.trace("Ignoring unknown host '{}' retrieved in the MX " + "records for domain '{}'.", record
-						.getValue(), domain);
-			}
-		}
+        for (ResouceRecord record : recordList) {
+            try {
+                // create the InetAddress instance
+                result.add(InetAddress.getByName(record.getValue()));
+            } catch (UnknownHostException e) {
 
-		LOG.trace("Retrieved {} as MTAs for the domain '{}'.", result, domain);
+                // and ignore the records with unknown hosts
+                LOG.trace("Ignoring unknown host '{}' retrieved in the MX " + "records for domain '{}'.", record
+                        .getValue(), domain);
+            }
+        }
 
-		return result;
-	}
+        LOG.trace("Retrieved {} as MTAs for the domain '{}'.", result, domain);
 
-	@Override
-	public Result validate(MailAddress mailAddress) {
-		List<InetAddress> mxRecords;
-		// discover the the list of records to check depending on the domain
-		// format
-		switch (mailAddress.getDomainFormat()) {
-		case NAME:
-			// try to use the resolver
-			if (this.resolver == null) {
-				// if we have no resolver, the validation will be aborted
-				// and the address considered valid with semantic validity
-				return Result.create(ADDRESS_VALID, SYNTAX, mailAddress);
-			}
+        return result;
+    }
 
-			try {
-				// receive the InetAddresses for all, in the DNS registered,
-				// MX
-				// entries
-				mxRecords = retrieveMxRecords(mailAddress.getDomain());
-			}
-			catch (ResolverException re) {
-				// if we cannot get the list, abort validation, pass the
-				// result
-				// code,
-				// message and assume semantic validity. Domain validity is
-				// not
-				// granted because an empty result list would indicate this.
-				return Result.create(re.getResultCode(), SYNTAX, mailAddress, re.getItems());
-			}
+    @Override
+    public Result validate(MailAddress mailAddress) {
+        List<InetAddress> mxRecords;
+        // discover the the list of records to check depending on the domain
+        // format
+        switch (mailAddress.getDomainFormat()) {
+        case NAME:
+            // try to use the resolver
+            if (resolver == null) {
+                // if we have no resolver, the validation will be aborted
+                // and the address considered valid with semantic validity
+                return Result.create(ADDRESS_VALID, SYNTAX, mailAddress);
+            }
 
-			if (mxRecords == null || mxRecords.isEmpty()) {
-				// if no mxRecors could be gathered, abort validation and
-				// assume semantic valitiy
-				return Result.create(NO_MX_RECORDS_FOUND, SYNTAX, mailAddress, mailAddress.getDomain());
-			}
-			break;
-		case IP:
-			// use the IP
-			String ip = mailAddress.getDomain();
-			try {
-				// strip the [] from the IP
-				ip = ip.substring(1, ip.length() - 1);
-				// and fetch the address
-				mxRecords = Arrays.asList(InetAddress.getByName(ip));
-			}
-			catch (UnknownHostException e) {
-				// if the IP couldn't be resolved, abort validation and
-				// assume semantic validity
-				return Result.create(NO_MTA_ACCESSIBLE, SYNTAX, mailAddress, ip);
-			}
-			catch (IndexOutOfBoundsException e) {
-				// if it's an IP format and the [] couldn't be stripped
-				// send a GENERAL_VALIDATION_ERROR and assume no validity
-				return Result.create(GENERAL_VALIDATION_ERROR, INVALID, mailAddress, ip);
-			}
-			break;
-		default:
-			throw new IllegalArgumentException("Illegal domain name format '" + mailAddress.getDomainFormat()
-					+ "' valid values are IP or NAME.");
-		}
+            try {
+                // receive the InetAddresses for all, in the DNS registered,
+                // MX
+                // entries
+                mxRecords = retrieveMxRecords(mailAddress.getDomain());
+            } catch (ResolverException re) {
+                // if we cannot get the list, abort validation, pass the
+                // result
+                // code,
+                // message and assume semantic validity. Domain validity is
+                // not
+                // granted because an empty result list would indicate this.
+                return Result.create(re.getResultCode(), SYNTAX, mailAddress, re.getItems());
+            }
 
-		// get an iterator of iteration over each MX record
-		Iterator<InetAddress> mxAddressIterator = mxRecords.iterator();
-		Result result = null;
+            if (mxRecords == null || mxRecords.isEmpty()) {
+                // if no mxRecors could be gathered, abort validation and
+                // assume semantic valitiy
+                return Result.create(NO_MX_RECORDS_FOUND, SYNTAX, mailAddress, mailAddress.getDomain());
+            }
+            break;
+        case IP:
+            // use the IP
+            String ip = mailAddress.getDomain();
+            try {
+                // strip the [] from the IP
+                ip = ip.substring(1, ip.length() - 1);
+                // and fetch the address
+                mxRecords = Arrays.asList(InetAddress.getByName(ip));
+            } catch (UnknownHostException e) {
+                // if the IP couldn't be resolved, abort validation and
+                // assume semantic validity
+                return Result.create(NO_MTA_ACCESSIBLE, SYNTAX, mailAddress, ip);
+            } catch (IndexOutOfBoundsException e) {
+                // if it's an IP format and the [] couldn't be stripped
+                // send a GENERAL_VALIDATION_ERROR and assume no validity
+                return Result.create(GENERAL_VALIDATION_ERROR, INVALID, mailAddress, ip);
+            }
+            break;
+        default:
+            throw new IllegalArgumentException("Illegal domain name format '" + mailAddress.getDomainFormat()
+                    + "' valid values are IP or NAME.");
+        }
 
-		while (mxAddressIterator.hasNext() && (result == null || !ADDRESS_VALID.equals(result.getResultCode()))) {
-			// while we have more MX entries and there is no result or the
-			// result does not meet the requirements
-			InetAddress mxAddress = mxAddressIterator.next();
+        // get an iterator of iteration over each MX record
+        Iterator<InetAddress> mxAddressIterator = mxRecords.iterator();
+        Result result = null;
 
-			// query the address and fetch a "better" result.
-			result = this.addressQuery.query(mailAddress, this.fromAddress, mxAddress);
-		}
+        while (mxAddressIterator.hasNext() && (result == null || !ADDRESS_VALID.equals(result.getResultCode()))) {
+            // while we have more MX entries and there is no result or the
+            // result does not meet the requirements
+            InetAddress mxAddress = mxAddressIterator.next();
 
-		// finally create a result
-		if (result == null) {
-			// if we still have no result somebody violated the interface
-			// contracts strictly speaking. The address query should return
-			// a result.
-			// In this case we signal, that no MTA is accessible and assume
-			// a semantic validity
-			return Result.create(NO_MTA_ACCESSIBLE, SYNTAX, mailAddress, mailAddress.getDomain());
-		}
-		else {
-			// if the address query returned a result, simply pass it.
-			return result;
-		}
-	}
+            // query the address and fetch a "better" result.
+            result = addressQuery.query(mailAddress, fromAddress, mxAddress);
+        }
 
-	@Override
-	public Resolver getResolver() {
-		return this.resolver;
-	}
+        // finally create a result
+        if (result == null) {
+            // if we still have no result somebody violated the interface
+            // contracts strictly speaking. The address query should return
+            // a result.
+            // In this case we signal, that no MTA is accessible and assume
+            // a semantic validity
+            return Result.create(NO_MTA_ACCESSIBLE, SYNTAX, mailAddress, mailAddress.getDomain());
+        } else {
+            // if the address query returned a result, simply pass it.
+            return result;
+        }
+    }
 
-	@Override
-	public AccountQuery getAccountQuery() {
-		return this.addressQuery;
-	}
+    @Override
+    public Resolver getResolver() {
+        return resolver;
+    }
 
-	static class Factory implements ValidatorFactory {
+    @Override
+    public AccountQuery getAccountQuery() {
+        return addressQuery;
+    }
 
-		private final Validator validatorService;
+    static class Factory implements ValidatorFactory {
 
-		public Factory(MailAddressFactory mailAddressFactory, Resolver resolver, AccountQuery accountQuery,
-				MailAddress fromAddress) {
-			this.validatorService = new BasicValidator(mailAddressFactory, resolver, accountQuery, fromAddress);
-		}
+        private final Validator validatorService;
 
-		@Override
-		public Validator getValidator() {
-			return this.validatorService;
-		}
+        public Factory(MailAddressFactory mailAddressFactory, Resolver resolver, AccountQuery accountQuery,
+                MailAddress fromAddress) {
+            validatorService = new BasicValidator(mailAddressFactory, resolver, accountQuery, fromAddress);
+        }
 
-	}
+        @Override
+        public Validator getValidator() {
+            return validatorService;
+        }
+
+    }
 
 }
