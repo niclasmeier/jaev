@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [     <!ENTITY nbsp "&#160;">  ]>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/template/default.xhtml"
+>
+
+<ui:define name="title">Hello World</ui:define>
+<ui:define name="content">
+        <f:view>
+            <h:form>
+                <h2>Please enter an e-mail address:</h2> 
+                <h:messages for="email" showDetail="false"/>
+					<h:inputText id="email" value="#{emailBean.emailAddress}" required="true">
+						<f:validator validatorId="jaev.email" />
+					</h:inputText>
+				<h:commandButton value="press me" action="#{emailAction.send}"/>
+            </h:form>
+        </f:view>
+</ui:define>
+</ui:composition>

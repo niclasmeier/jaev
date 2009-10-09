@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_1.dtd" >
+
+<faces-config>
+	
+	<!-- managed beans of the simple hello world app -->
+	<managed-bean>
+		<managed-bean-name>emailBean</managed-bean-name>
+		<managed-bean-class>com.googlecode.jaev.examples.jsf.EmailBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>	
+	<managed-bean>
+		<managed-bean-name>emailAction</managed-bean-name>
+		<managed-bean-class>com.googlecode.jaev.examples.jsf.EmailAction</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>	
+
+
+        <!-- navigation rules for index.xhtml -->
+        <navigation-rule>
+                <from-view-id>/index.xhtml</from-view-id>
+                <navigation-case>
+                        <from-outcome>success</from-outcome>
+                        <to-view-id>/success.xhtml</to-view-id>
+                </navigation-case>
+        </navigation-rule>
+
+</faces-config>

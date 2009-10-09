@@ -1,0 +1,28 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>true</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <includes>
+        <include>README*</include>
+        <include>LICENSE*</include>
+        <include>NOTICE*</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target/jaev-jsf-example</directory>
+      <outputDirectory>webapp</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>src/main/java</directory>
+      <outputDirectory>src</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <outputDirectory>src</outputDirectory>
+    </fileSet>            
+  </fileSets>
+</assembly>

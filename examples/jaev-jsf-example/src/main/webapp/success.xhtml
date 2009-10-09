@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [     <!ENTITY nbsp "&#160;">  ]>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/WEB-INF/template/default.xhtml"
+>
+<ui:define name="title">Success </ui:define>
+<ui:define name="content">
+        <f:view>
+            <h2>Validatied e-mail address: #{emailBean.emailAddress}.</h2>
+	    	<a href="index.jsf">HOME</a>
+        </f:view>
+</ui:define>
+</ui:composition>
