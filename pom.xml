@@ -26,11 +26,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://jaev.googlecode.com/svn/trunk/
-		</connection>
-		<developerConnection>scm:svn:https://jaev.googlecode.com/svn/trunk/
-		</developerConnection>
-		<url>http://jaev.googlecode.com/svn/tags/trunk/exaples/</url>
+		<connection>scm:git:git://github.com/niclasmeier/jaev</connection>
+		<developerConnection>scm:git:git://github.com/niclasmeier/jaev</developerConnection>
+		<url>http://github.com/niclasmeier/jaev</url>
 	</scm>
 
 	<developers>
