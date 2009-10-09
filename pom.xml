@@ -20,7 +20,6 @@
 	<modules>
 		<module>validation</module>
 	</modules>
-    </modules>
 
 	<properties>
 		<logback.version>0.9.14</logback.version>
