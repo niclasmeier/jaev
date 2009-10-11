@@ -88,8 +88,7 @@ public class DnsEhCache implements Cache {
 
 		if (cacheElement == null) {
 			return EMPTY;
-		}
-		else {
+		} else {
 			return new ElementEntry(cacheElement);
 		}
 	}
@@ -101,19 +100,22 @@ public class DnsEhCache implements Cache {
 	}
 
 	@Override
-	public Entry put(String domainName, Type type, List<ResouceRecord> resourceRecords) {
+	public Entry put(String domainName, Type type,
+			List<ResouceRecord> resourceRecords) {
 		Element element = this.cache.get(domainName);
 		Data data;
 		if (element == null) {
 			data = new Data(false);
 			element = new Element(domainName, data);
 			this.cache.put(element);
-		}
-		else {
+		} else {
 			data = (Data) element.getValue();
 		}
 
-		data.getRecords().put(type, resourceRecords.toArray(new ResouceRecord[resourceRecords.size()]));
+		data.getRecords().put(
+				type,
+				resourceRecords.toArray(new ResouceRecord[resourceRecords
+						.size()]));
 
 		return new ElementEntry(element);
 	}
@@ -147,8 +149,7 @@ public class DnsEhCache implements Cache {
 			this.notFound = notFound;
 			if (notFound) {
 				this.records = Collections.emptyMap();
-			}
-			else {
+			} else {
 				this.records = new java.util.HashMap<Type, ResouceRecord[]>();
 			}
 		}
@@ -174,7 +175,8 @@ public class DnsEhCache implements Cache {
 	}
 
 	/**
-	 * The entry implementation which is used to bridge the <code>Element</code> to the <code>Entry</code> interface.
+	 * The entry implementation which is used to bridge the <code>Element</code>
+	 * to the <code>Entry</code> interface.
 	 */
 	private static final class ElementEntry implements Entry {
 
@@ -207,13 +209,11 @@ public class DnsEhCache implements Cache {
 
 			if (recordMap.isEmpty()) {
 				return Collections.emptyList();
-			}
-			else {
+			} else {
 				ResouceRecord[] records = recordMap.get(type);
 				if (records.length > 0) {
 					return Arrays.asList(records);
-				}
-				else {
+				} else {
 					return Collections.emptyList();
 				}
 			}

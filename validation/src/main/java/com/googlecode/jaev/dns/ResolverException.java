@@ -35,13 +35,32 @@ public class ResolverException extends Exception {
 
 	private final Object[] items;
 
-	public ResolverException(DnsResultCode resultCode, Object... items) {
+	/**
+	 * Constructor
+	 * 
+	 * @param resultCode
+	 *            The current result code
+	 * @param items
+	 *            Some items
+	 */
+	ResolverException(DnsResultCode resultCode, Object... items) {
 		super(ResultCodeHelper.createMessage(resultCode, items));
 		this.resultCode = resultCode;
 		this.items = items;
 	}
 
-	public ResolverException(DnsResultCode resultCode, Throwable cause, Object... items) {
+	/**
+	 * Constructor
+	 * 
+	 * @param resultCode
+	 *            The current result code
+	 * @param cause
+	 *            The exception cause
+	 * @param items
+	 *            The items
+	 */
+	ResolverException(DnsResultCode resultCode, Throwable cause,
+			Object... items) {
 		super(ResultCodeHelper.createMessage(resultCode, items), cause);
 		this.resultCode = resultCode;
 		this.items = items;
