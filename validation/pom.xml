@@ -13,9 +13,9 @@
 	</parent>
 
 	<scm>
-		<connection>scm:git:git://github.com/niclasmeier/jaev</connection>
-		<developerConnection>scm:git:git://github.com/niclasmeier/jaev</developerConnection>
-		<url>http://github.com/niclasmeier/jaev</url>
+		<connection>scm:git:git://github.com/jaev/jaev.git</connection>
+		<developerConnection>scm:git:git://github.com/jaev/jaev.git</developerConnection>
+		<url>http://github.com/jaev/jaev</url>
 	</scm>
 
 	<build>
