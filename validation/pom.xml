@@ -19,7 +19,7 @@
 	</scm>
 
 	<build>
-		<finalName>jaev-${version}</finalName>
+		<finalName>jaev-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-release-plugin</artifactId>
