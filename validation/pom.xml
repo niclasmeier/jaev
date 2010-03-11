@@ -2,14 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.jaev</groupId>
 	<artifactId>validation</artifactId>
-	<version>1.1.5-SNAPSHOT</version>
+	<version>1.1.5</version>
 	<name>validation</name>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>com.googlecode.jaev</groupId>
 		<artifactId>jaev</artifactId>
-		<version>1.1.5-SNAPSHOT</version>
+		<version>1.1.5</version>
 	</parent>
 
 	<scm>
