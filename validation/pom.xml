@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.jaev</groupId>
 	<artifactId>validation</artifactId>
-	<version>1.1.5-SNAPSHOT</version>
+	<version>1.1.6-SNAPSHOT</version>
 	<name>validation</name>
 	<packaging>jar</packaging>
 
