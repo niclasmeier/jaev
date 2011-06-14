@@ -100,8 +100,7 @@ public class DnsEhCache implements Cache {
 	}
 
 	@Override
-	public Entry put(String domainName, Type type,
-			List<ResouceRecord> resourceRecords) {
+	public Entry put(String domainName, Type type, List<ResouceRecord> resourceRecords) {
 		Element element = this.cache.get(domainName);
 		Data data;
 		if (element == null) {
@@ -112,10 +111,7 @@ public class DnsEhCache implements Cache {
 			data = (Data) element.getValue();
 		}
 
-		data.getRecords().put(
-				type,
-				resourceRecords.toArray(new ResouceRecord[resourceRecords
-						.size()]));
+		data.getRecords().put(type, resourceRecords.toArray(new ResouceRecord[resourceRecords.size()]));
 
 		return new ElementEntry(element);
 	}
@@ -175,8 +171,7 @@ public class DnsEhCache implements Cache {
 	}
 
 	/**
-	 * The entry implementation which is used to bridge the <code>Element</code>
-	 * to the <code>Entry</code> interface.
+	 * The entry implementation which is used to bridge the <code>Element</code> to the <code>Entry</code> interface.
 	 */
 	private static final class ElementEntry implements Entry {
 
@@ -207,11 +202,11 @@ public class DnsEhCache implements Cache {
 		public List<ResouceRecord> getResourceRecords(Type type) {
 			Map<Type, ResouceRecord[]> recordMap = getData().getRecords();
 
-			if (recordMap.isEmpty()) {
+			if (recordMap == null || recordMap.isEmpty()) {
 				return Collections.emptyList();
 			} else {
 				ResouceRecord[] records = recordMap.get(type);
-				if (records.length > 0) {
+				if (records != null && records.length > 0) {
 					return Arrays.asList(records);
 				} else {
 					return Collections.emptyList();
