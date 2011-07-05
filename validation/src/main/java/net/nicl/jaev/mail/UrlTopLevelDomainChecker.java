@@ -14,9 +14,10 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.Check.notNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,8 +28,7 @@ import java.net.URLConnection;
 import java.util.Collections;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static net.nicl.jaev.Check.notNull;
 
 /**
  * The <code>UrlTopLevelDomainChecker</code> uses a <code>java.net.URL</code> to

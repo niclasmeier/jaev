@@ -11,19 +11,10 @@
  * the License.
  */
 
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
 
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.dns.DnsResultCode.DNS_TIMEOUT;
-import static com.googlecode.jaev.dns.DnsResultCode.DOMAIN_NAME_NOT_FOUND;
-import static com.googlecode.jaev.dns.DnsResultCode.GENERAL_DNS_ERROR;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-import java.net.SocketTimeoutException;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.naming.Context;
 import javax.naming.NameNotFoundException;
@@ -33,9 +24,15 @@ import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
+import java.net.SocketTimeoutException;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.dns.DnsResultCode.*;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * <p>

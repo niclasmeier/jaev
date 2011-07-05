@@ -1,4 +1,4 @@
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
 import java.util.concurrent.TimeUnit;
 

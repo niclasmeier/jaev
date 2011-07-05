@@ -14,9 +14,9 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import com.googlecode.jaev.MailAddress;
+import net.nicl.jaev.MailAddress;
 
 /**
  * The <code>MailAddressFactory</code> is used to create and validate an e-mail

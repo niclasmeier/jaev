@@ -14,10 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
-
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_IP_FORMAT;
-import static java.nio.charset.CodingErrorAction.REPORT;
+package net.nicl.jaev.mail;
 
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
@@ -25,6 +22,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static net.nicl.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_IP_FORMAT;
+import static java.nio.charset.CodingErrorAction.REPORT;
 
 /**
  * This helper class provides some shared functions for e-mail validation

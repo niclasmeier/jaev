@@ -14,23 +14,15 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.Utilities.isNotEmpty;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_UNKNOWN;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.Validity.ACCESSIBLE;
-import static com.googlecode.jaev.Validity.DOMAIN;
-import static com.googlecode.jaev.smtp.Command.QUIT;
-import static com.googlecode.jaev.smtp.Reply.Code.MAILBOX_UNAVAILABE;
-import static com.googlecode.jaev.smtp.Reply.Code.REQUESTED_MAIL_ACTION_OKAY;
-import static com.googlecode.jaev.smtp.Reply.Code.SERVICE_READY;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_FROM_ADDRESS;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_FROM_DOMAIN;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_RECIEPIENT;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_NOT_RESPONDING;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_SUSPECTS_SPAM;
-import static java.util.EnumSet.of;
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.Validity;
+import net.nicl.jaev.smtp.Reply.Code;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -38,14 +30,15 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.Validity;
-import com.googlecode.jaev.smtp.Reply.Code;
+import static java.util.EnumSet.of;
+import static net.nicl.jaev.Utilities.isNotEmpty;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_UNKNOWN;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_VALID;
+import static net.nicl.jaev.Validity.ACCESSIBLE;
+import static net.nicl.jaev.Validity.DOMAIN;
+import static net.nicl.jaev.smtp.Command.QUIT;
+import static net.nicl.jaev.smtp.Reply.Code.*;
+import static net.nicl.jaev.smtp.SmtpResultCode.*;
 
 /**
  * The <code>Idiom</code> class groups issuing of a <code>Command</code> and the

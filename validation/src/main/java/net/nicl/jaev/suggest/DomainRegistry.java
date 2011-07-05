@@ -1,4 +1,4 @@
-package com.googlecode.jaev.suggest;
+package net.nicl.jaev.suggest;
 
 import java.util.Map;
 

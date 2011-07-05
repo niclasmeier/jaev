@@ -13,14 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.jaev.integration;
+package net.nicl.jaev.integration;
+
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
+import net.nicl.jaev.ResultCode;
 
 import java.net.InetAddress;
 import java.util.Date;
-
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.ResultCode;
 
 public final class Utils {
 

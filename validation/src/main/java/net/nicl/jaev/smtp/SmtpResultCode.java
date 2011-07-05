@@ -14,12 +14,12 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.ResultCode.Type.TECHNICAL;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.ResultCodeHelper;
 
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.ResultCodeHelper;
+import static net.nicl.jaev.ResultCode.Type.TECHNICAL;
 
 /**
  * Class to provide SMTP communication result codes

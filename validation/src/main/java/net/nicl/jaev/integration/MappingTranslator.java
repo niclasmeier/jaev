@@ -14,19 +14,18 @@
  * the License.
  */
 
-package com.googlecode.jaev.integration;
+package net.nicl.jaev.integration;
 
-import static com.googlecode.jaev.Check.notNull;
+import net.nicl.jaev.Result;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.ResultCodeHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.ResultCodeHelper;
+import static net.nicl.jaev.Check.notNull;
 
 /**
  * This result translator variant uses a map to assign the code of a result to a

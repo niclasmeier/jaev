@@ -14,12 +14,11 @@
  * the License.
  */
 
-package com.googlecode.jaev;
-
-import java.io.UnsupportedEncodingException;
+package net.nicl.jaev;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import java.io.UnsupportedEncodingException;
 
 /**
  * This interface defines all necessary methods for an e-mail address

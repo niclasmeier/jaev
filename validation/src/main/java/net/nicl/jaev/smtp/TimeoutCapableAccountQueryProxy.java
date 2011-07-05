@@ -14,29 +14,22 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.Validity.DOMAIN;
-import static com.googlecode.jaev.smtp.SmtpResultCode.IO_ERROR_DURING_MTA_CONVERSATION;
-import static com.googlecode.jaev.smtp.SmtpResultCode.TIMEOUT_DURING_MTA_CONVERSATION;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.util.concurrent.*;
+
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.Validity.DOMAIN;
+import static net.nicl.jaev.smtp.SmtpResultCode.IO_ERROR_DURING_MTA_CONVERSATION;
+import static net.nicl.jaev.smtp.SmtpResultCode.TIMEOUT_DURING_MTA_CONVERSATION;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 /**
  * This <code>AccountQuery</code> proxy implementation executes the query in a

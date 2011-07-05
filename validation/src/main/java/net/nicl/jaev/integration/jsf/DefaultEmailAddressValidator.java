@@ -14,23 +14,22 @@
  * the License.
  */
 
-package com.googlecode.jaev.integration.jsf;
+package net.nicl.jaev.integration.jsf;
 
-import static com.googlecode.jaev.Acceptance.SIMPLE;
+import net.nicl.jaev.BasicValidator;
+import net.nicl.jaev.dns.SimpleResolver;
+import net.nicl.jaev.integration.ResultTranslator;
+import net.nicl.jaev.integration.StandardMappingTransator;
+import net.nicl.jaev.mail.MailParseException;
+import net.nicl.jaev.mail.SimpleMailAddressFactory;
+import net.nicl.jaev.smtp.BasicAccountQuery;
 
+import javax.faces.context.FacesContext;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.faces.context.FacesContext;
-
-import com.googlecode.jaev.BasicValidator;
-import com.googlecode.jaev.dns.SimpleResolver;
-import com.googlecode.jaev.integration.ResultTranslator;
-import com.googlecode.jaev.integration.StandardMappingTransator;
-import com.googlecode.jaev.mail.MailParseException;
-import com.googlecode.jaev.mail.SimpleMailAddressFactory;
-import com.googlecode.jaev.smtp.BasicAccountQuery;
+import static net.nicl.jaev.Acceptance.SIMPLE;
 
 public class DefaultEmailAddressValidator extends EmailAddressValidator {
 

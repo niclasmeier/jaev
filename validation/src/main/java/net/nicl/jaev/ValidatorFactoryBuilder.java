@@ -14,12 +14,12 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import com.googlecode.jaev.dns.Resolver;
-import com.googlecode.jaev.mail.MailAddressFactory;
-import com.googlecode.jaev.mail.MailParseException;
-import com.googlecode.jaev.smtp.AccountQuery;
+import net.nicl.jaev.dns.Resolver;
+import net.nicl.jaev.mail.MailAddressFactory;
+import net.nicl.jaev.mail.MailParseException;
+import net.nicl.jaev.smtp.AccountQuery;
 
 /**
  * The validator factory builder is used to create a validator factory. The

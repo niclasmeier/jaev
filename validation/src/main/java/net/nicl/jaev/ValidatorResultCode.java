@@ -14,11 +14,11 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static com.googlecode.jaev.ResultCode.Category.VALIDATION;
-import static com.googlecode.jaev.ResultCode.Type.LOGICAL;
-import static com.googlecode.jaev.ResultCode.Type.TECHNICAL;
+import static net.nicl.jaev.ResultCode.Category.VALIDATION;
+import static net.nicl.jaev.ResultCode.Type.LOGICAL;
+import static net.nicl.jaev.ResultCode.Type.TECHNICAL;
 
 /**
  * Common class to provide general result codes

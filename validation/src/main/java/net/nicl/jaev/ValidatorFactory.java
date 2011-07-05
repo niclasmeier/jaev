@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
 /**
  * A validator factory may be used get get a validator

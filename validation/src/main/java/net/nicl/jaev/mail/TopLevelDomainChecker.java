@@ -14,16 +14,16 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.Utilities.isNotEmpty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static net.nicl.jaev.Utilities.isNotEmpty;
 
 /**
  * The top level domain checker manages a list of top level domains and provides

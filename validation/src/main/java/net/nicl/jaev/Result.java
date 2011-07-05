@@ -14,15 +14,15 @@
  * the License.
  */
 
-package com.googlecode.jaev;
-
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.Validity.INVALID;
-import static com.googlecode.jaev.Validity.SYNTAX;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_EMAIL_FORMAT;
+package net.nicl.jaev;
 
 import java.util.Arrays;
+
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_VALID;
+import static net.nicl.jaev.Validity.INVALID;
+import static net.nicl.jaev.Validity.SYNTAX;
+import static net.nicl.jaev.mail.MailResultCode.ILLEGAL_EMAIL_FORMAT;
 
 /**
  * This class is a superclass for all results which may be used in the

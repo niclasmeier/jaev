@@ -28,10 +28,10 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.Acceptance;
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.Validator;
-import com.googlecode.jaev.integration.ResultTranslator;
+import net.nicl.jaev.Acceptance;
+import net.nicl.jaev.Result;
+import net.nicl.jaev.Validator;
+import net.nicl.jaev.integration.ResultTranslator;
 
 
 /**

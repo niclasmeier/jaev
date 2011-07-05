@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
+
+import net.nicl.jaev.dns.ResouceRecord.Type;
 
 import java.util.List;
-
-import com.googlecode.jaev.dns.ResouceRecord.Type;
 
 /**
  * The DNS cache interface defines methods to enable caching of DNS lookups

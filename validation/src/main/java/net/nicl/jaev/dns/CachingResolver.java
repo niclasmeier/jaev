@@ -13,17 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
 
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.dns.DnsResultCode.DOMAIN_NAME_NOT_FOUND;
-import static java.util.concurrent.TimeUnit.MINUTES;
+import net.nicl.jaev.dns.Cache.Entry;
+import net.nicl.jaev.dns.ResouceRecord.Type;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.googlecode.jaev.dns.Cache.Entry;
-import com.googlecode.jaev.dns.ResouceRecord.Type;
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.dns.DnsResultCode.DOMAIN_NAME_NOT_FOUND;
+import static java.util.concurrent.TimeUnit.MINUTES;
 
 /**
  * The caching resolver implements the decorator pattern to add caching

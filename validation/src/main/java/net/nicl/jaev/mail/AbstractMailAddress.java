@@ -14,14 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import java.io.UnsupportedEncodingException;
+import net.nicl.jaev.MailAddress;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-
-import com.googlecode.jaev.MailAddress;
+import java.io.UnsupportedEncodingException;
 
 public abstract class AbstractMailAddress implements MailAddress {
 

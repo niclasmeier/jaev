@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
 /**
  * The check class provides some static method to improve the quality of the

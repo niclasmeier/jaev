@@ -14,29 +14,23 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.MailAddress.DomainFormat.NAME;
-import static com.googlecode.jaev.ValidatorResultCode.EMAIL_GROUPS_NOT_SUPPORTED;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_CHARACTERS;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_IP_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_NAME_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_EMAIL_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.INVALID_LOCAL_PART;
-import static com.googlecode.jaev.mail.MailResultCode.UNKNOWN_TOPLEVEL_DOMAIN;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.Set;
-
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.ResultCode;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.ResultCode;
+import java.util.Set;
+
+import static net.nicl.jaev.MailAddress.DomainFormat.NAME;
+import static net.nicl.jaev.ValidatorResultCode.EMAIL_GROUPS_NOT_SUPPORTED;
+import static net.nicl.jaev.mail.MailResultCode.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * This test cases are inspried by the test cases from commons validator
@@ -160,7 +154,7 @@ public class PerlMailAddressFactoryTestCase {
 		test("abigail@", null, null, null, ILLEGAL_EMAIL_FORMAT, false);
 		test("@example.com", null, null, null, ILLEGAL_EMAIL_FORMAT, false);
 		test("phrase: abigail@example.com abigail@example.com ;", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT, false);
-		test("invalid¥char@example.com", null, null, null, ILLEGAL_CHARACTERS, false);
+		test("invalidï¿½char@example.com", null, null, null, ILLEGAL_CHARACTERS, false);
 		test("\"Joe & J. Harvey\" <example @Org>", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT, false);
 		test("name:;", null, null, null, EMAIL_GROUPS_NOT_SUPPORTED, false);
 		test("':;", null, null, null, EMAIL_GROUPS_NOT_SUPPORTED, false);

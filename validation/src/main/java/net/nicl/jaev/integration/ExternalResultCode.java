@@ -1,4 +1,4 @@
-package com.googlecode.jaev.integration;
+package net.nicl.jaev.integration;
 
 public class ExternalResultCode {
 

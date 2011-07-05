@@ -14,9 +14,9 @@
  * the License.
  */
 
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
 
-import com.googlecode.jaev.ResultCodeHelper;
+import net.nicl.jaev.ResultCodeHelper;
 
 /**
  * This exception provides additional information if a problem during the DNS

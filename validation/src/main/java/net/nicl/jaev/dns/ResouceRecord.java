@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
 
 import java.io.Serializable;
 

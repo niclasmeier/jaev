@@ -14,31 +14,26 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.MailAddress.DomainFormat.IP;
-import static com.googlecode.jaev.MailAddress.DomainFormat.NAME;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_CHARACTERS;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_IP_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_NAME_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_EMAIL_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.UNKNOWN_TOPLEVEL_DOMAIN;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.ResultCode;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.ResultCode;
+import static net.nicl.jaev.MailAddress.DomainFormat.IP;
+import static net.nicl.jaev.MailAddress.DomainFormat.NAME;
+import static net.nicl.jaev.mail.MailResultCode.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
-public class ParserMailAddressFactoryTestCase {
+public class SimpleMailAddressFactoryTestCase {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ParserMailAddressFactoryTestCase.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SimpleMailAddressFactoryTestCase.class);
 
-	private static final MailAddressFactory factory = new ParserMailAddressFactory();
+	private static final MailAddressFactory factory = new SimpleMailAddressFactory();
 
 	@Test
 	public void valid() {
@@ -67,19 +62,19 @@ public class ParserMailAddressFactoryTestCase {
 
 	@Test
 	public void illegalEmaiFormat() {
-		test("jaev.googlecode.com", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("jaev.googlecode.com", null, null, null, ILLEGAL_EMAIL_FORMAT);
 	}
 
 	@Test
 	public void invalidLocalPart() {
 		// -- Unquoted special characters are not valid --
-		test("joe(@sourceforge.net", null, null, null, ILLEGAL_EMAIL_FORMAT);
-		test("joe)@sourceforge.net", null, null, null, ILLEGAL_EMAIL_FORMAT);
-		test("joe;@sourceforge.net", null, null, null, ILLEGAL_EMAIL_FORMAT);
-		test("john,doe@sourceforge.net", null, null, null, ILLEGAL_EMAIL_FORMAT);
+		test("joe.@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
+		test("joe(@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
+		test("joe)@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
+		test("joe;@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
+		test("john,doe@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
 
-		// test("joe.@sourceforge.net", null, null, null, ILLEGAL_EMAIL_FORMAT);
-		// FIXME: was valid but it shouldn't
+		// FIXME: This works, but it shouldn't
 		// test("joe+@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
 		// test("joe*@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
 		// test("joe/@sourceforge.net", null, null, null, INVALID_LOCAL_PART);
@@ -110,15 +105,14 @@ public class ParserMailAddressFactoryTestCase {
 
 	@Test
 	public void illegalDomainNameFormat() {
-		test("root@192.168.0.1", null, null, null, UNKNOWN_TOPLEVEL_DOMAIN);
-		test("john_doe@sourceforge.n", null, null, null, UNKNOWN_TOPLEVEL_DOMAIN);
+		test("root@192.168.0.1", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("john_doe@sourceforge.n", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
 
-		test("john_doe@sourceforge.-net", null, null, null, UNKNOWN_TOPLEVEL_DOMAIN);
-		test("john_doe@sourceforge.n-et", null, null, null, UNKNOWN_TOPLEVEL_DOMAIN);
-		test("john_doe@sourceforge.ne-t", null, null, null, UNKNOWN_TOPLEVEL_DOMAIN);
-		test("john_doe@sourceforge.net.", null, null, null, UNKNOWN_TOPLEVEL_DOMAIN);
-		// test("john_doe@o'reilly.org", null, null, null,
-		// ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("john_doe@sourceforge.-net", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("john_doe@sourceforge.n-et", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("john_doe@sourceforge.ne-t", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("john_doe@sourceforge.net.", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
+		test("john_doe@o'reilly.org", null, null, null, ILLEGAL_DOMAIN_NAME_FORMAT);
 
 	}
 

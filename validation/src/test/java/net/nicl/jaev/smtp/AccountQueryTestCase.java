@@ -1,28 +1,9 @@
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_UNKNOWN;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.Validity.ACCESSIBLE;
-import static com.googlecode.jaev.Validity.ACCOUNT;
-import static com.googlecode.jaev.Validity.DOMAIN;
-import static com.googlecode.jaev.integration.Initialiser.defaultFromAddress;
-import static com.googlecode.jaev.smtp.Reply.Code.LOCAL_ERROR_IN_PROCESSING;
-import static com.googlecode.jaev.smtp.Reply.Code.MAILBOX_UNAVAILABE;
-import static com.googlecode.jaev.smtp.Reply.Code.REQUESTED_MAIL_ACTION_OKAY;
-import static com.googlecode.jaev.smtp.Reply.Code.SERVICE_NOT_AVAILABLE;
-import static com.googlecode.jaev.smtp.Reply.Code.SERVICE_READY;
-import static com.googlecode.jaev.smtp.SmtpResultCode.IO_ERROR_DURING_MTA_CONVERSATION;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_FROM_DOMAIN;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_NOT_RESPONDING;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.net.ConnectException;
-import java.net.InetAddress;
-
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.mail.SimpleMailAddressFactory;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.Sequence;
@@ -31,10 +12,18 @@ import org.jmock.integration.junit4.JUnit4Mockery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.mail.SimpleMailAddressFactory;
+import java.io.IOException;
+import java.net.ConnectException;
+import java.net.InetAddress;
+
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_UNKNOWN;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_VALID;
+import static net.nicl.jaev.Validity.*;
+import static net.nicl.jaev.integration.Initialiser.defaultFromAddress;
+import static net.nicl.jaev.smtp.Reply.Code.*;
+import static net.nicl.jaev.smtp.SmtpResultCode.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
 
 @RunWith(JMock.class)
 public final class AccountQueryTestCase {

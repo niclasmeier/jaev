@@ -6,13 +6,13 @@ options {
 }
 
 @parser::header {
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
 import java.util.List;
 }
 
 @lexer::header{ 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
 } 
 

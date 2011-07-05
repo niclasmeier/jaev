@@ -1,10 +1,10 @@
-package com.googlecode.jaev.integration.springframework;
+package net.nicl.jaev.integration.springframework;
+
+import net.nicl.jaev.Result;
+import net.nicl.jaev.Validation;
+import net.nicl.jaev.Validator;
 
 import javax.annotation.PostConstruct;
-
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.Validation;
-import com.googlecode.jaev.Validator;
 
 public class ValidatorService {
 

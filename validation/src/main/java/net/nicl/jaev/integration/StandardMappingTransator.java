@@ -14,35 +14,16 @@
  * the License.
  */
 
-package com.googlecode.jaev.integration;
+package net.nicl.jaev.integration;
 
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_UNKNOWN;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.ValidatorResultCode.EMAIL_GROUPS_NOT_SUPPORTED;
-import static com.googlecode.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
-import static com.googlecode.jaev.ValidatorResultCode.NO_MTA_ACCESSIBLE;
-import static com.googlecode.jaev.ValidatorResultCode.NO_MX_RECORDS_FOUND;
-import static com.googlecode.jaev.ValidatorResultCode.VALIDATION_TIMED_OUT;
-import static com.googlecode.jaev.dns.DnsResultCode.DNS_TIMEOUT;
-import static com.googlecode.jaev.dns.DnsResultCode.DOMAIN_NAME_NOT_FOUND;
-import static com.googlecode.jaev.dns.DnsResultCode.GENERAL_DNS_ERROR;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_CHARACTERS;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_IP_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_NAME_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_EMAIL_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.INVALID_LOCAL_PART;
-import static com.googlecode.jaev.mail.MailResultCode.UNKNOWN_TOPLEVEL_DOMAIN;
-import static com.googlecode.jaev.smtp.SmtpResultCode.IO_ERROR_DURING_MTA_CONVERSATION;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_FROM_ADDRESS;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_FROM_DOMAIN;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_DOES_NOT_ACCEPT_RECIEPIENT;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_NOT_RESPONDING;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_SUSPECTS_SPAM;
-import static com.googlecode.jaev.smtp.SmtpResultCode.TIMEOUT_DURING_MTA_CONVERSATION;
+import net.nicl.jaev.ResultCode;
 
 import java.util.Map;
 
-import com.googlecode.jaev.ResultCode;
+import static net.nicl.jaev.ValidatorResultCode.*;
+import static net.nicl.jaev.dns.DnsResultCode.*;
+import static net.nicl.jaev.mail.MailResultCode.*;
+import static net.nicl.jaev.smtp.SmtpResultCode.*;
 
 /**
  * The standard mapping translator translates the known result codes to strings

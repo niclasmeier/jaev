@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
 
-import static com.googlecode.jaev.ResultCode.Type.LOGICAL;
-import static com.googlecode.jaev.ResultCode.Type.TECHNICAL;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.ResultCodeHelper;
 
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.ResultCodeHelper;
+import static net.nicl.jaev.ResultCode.Type.LOGICAL;
+import static net.nicl.jaev.ResultCode.Type.TECHNICAL;
 
 /**
  * Class to provide result codes for DNS lookup

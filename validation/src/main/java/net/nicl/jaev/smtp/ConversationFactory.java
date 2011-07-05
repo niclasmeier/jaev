@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
 /**
  * The conversation factory creates a conversation to the remote system (mail

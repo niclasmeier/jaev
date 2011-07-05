@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
-
-import static com.googlecode.jaev.Check.notBlank;
-import static com.googlecode.jaev.Check.notNull;
+package net.nicl.jaev.smtp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static net.nicl.jaev.Check.notBlank;
+import static net.nicl.jaev.Check.notNull;
 
 /**
  * The command class describes a command issued to a SMTP mail server. The <code>Command</code> class consists of the

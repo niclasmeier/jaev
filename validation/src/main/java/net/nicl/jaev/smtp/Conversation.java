@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
 import java.io.IOException;
 import java.net.InetAddress;

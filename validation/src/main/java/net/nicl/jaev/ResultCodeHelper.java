@@ -14,15 +14,10 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
 import java.text.MessageFormat;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.SortedSet;
+import java.util.*;
 
 /**
  * This helper class provides facilities for result code management

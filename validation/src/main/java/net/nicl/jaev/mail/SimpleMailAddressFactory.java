@@ -14,27 +14,23 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.Check.notBlank;
-import static com.googlecode.jaev.MailAddress.DomainFormat.IP;
-import static com.googlecode.jaev.MailAddress.DomainFormat.NAME;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_CHARACTERS;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_DOMAIN_NAME_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_EMAIL_FORMAT;
-import static com.googlecode.jaev.mail.MailResultCode.INVALID_LOCAL_PART;
-import static com.googlecode.jaev.mail.MailResultCode.UNKNOWN_TOPLEVEL_DOMAIN;
-import static com.googlecode.jaev.mail.Utilites.checkIpDomain;
-import static com.googlecode.jaev.mail.Utilites.isAscii;
-import static java.nio.charset.CodingErrorAction.REPORT;
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.MailAddress.DomainFormat;
 
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.MailAddress.DomainFormat;
+import static net.nicl.jaev.Check.notBlank;
+import static net.nicl.jaev.MailAddress.DomainFormat.IP;
+import static net.nicl.jaev.MailAddress.DomainFormat.NAME;
+import static net.nicl.jaev.mail.MailResultCode.*;
+import static net.nicl.jaev.mail.Utilites.checkIpDomain;
+import static net.nicl.jaev.mail.Utilites.isAscii;
+import static java.nio.charset.CodingErrorAction.REPORT;
 
 /**
  * Simple implementation of the <code>MailAddressFactory</code> interface. Some
@@ -78,7 +74,7 @@ public class SimpleMailAddressFactory implements MailAddressFactory {
 
 	public SimpleMailAddressFactory() {
 		this(new UrlTopLevelDomainChecker(SimpleMailAddressFactory.class.getClassLoader().getResource(
-				"com/googlecode/jaev/mail/tlds-alpha-by-domain.txt")));
+				"net/nicl/jaev/mail/tlds-alpha-by-domain.txt")));
 	}
 
 	public SimpleMailAddressFactory(TopLevelDomainChecker topLevelDomainChecker) {

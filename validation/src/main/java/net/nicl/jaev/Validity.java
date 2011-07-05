@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev;
-
-import static com.googlecode.jaev.Check.notNull;
+package net.nicl.jaev;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
+
+import static net.nicl.jaev.Check.notNull;
 
 /**
  * The <code>Validity</code> class defines the validity level of the result. The

@@ -14,20 +14,19 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static com.googlecode.jaev.integration.Initialiser.defaultFromAddress;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
-import java.util.concurrent.TimeUnit;
-
+import net.nicl.jaev.mail.MailParseException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.mail.MailParseException;
+import java.util.concurrent.TimeUnit;
+
+import static net.nicl.jaev.integration.Initialiser.defaultFromAddress;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class BasicValidatorTestCase {
 

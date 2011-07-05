@@ -14,15 +14,15 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.Validity.DOMAIN;
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
 
 import java.net.InetAddress;
 
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_VALID;
+import static net.nicl.jaev.Validity.DOMAIN;
 
 /**
  * This simple account query implementation skips the account validation process

@@ -16,13 +16,13 @@
 
 package com.googlecode.jaev.examples.jsf;
 
-import static com.googlecode.jaev.integration.Initialiser.defaultFromAddress;
+import static net.nicl.jaev.integration.Initialiser.defaultFromAddress;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.integration.jsf.DefaultEmailAddressValidator;
-import com.googlecode.jaev.mail.MailParseException;
+import net.nicl.jaev.integration.jsf.DefaultEmailAddressValidator;
+import net.nicl.jaev.mail.MailParseException;
 
 
 public class EmailValidator extends DefaultEmailAddressValidator

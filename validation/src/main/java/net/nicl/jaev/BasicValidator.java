@@ -14,19 +14,18 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
-import static com.googlecode.jaev.ValidatorResultCode.NO_MTA_ACCESSIBLE;
-import static com.googlecode.jaev.ValidatorResultCode.NO_MX_RECORDS_FOUND;
-import static com.googlecode.jaev.Validity.INVALID;
-import static com.googlecode.jaev.Validity.SYNTAX;
-import static com.googlecode.jaev.dns.ResouceRecord.Type.A;
-import static com.googlecode.jaev.dns.ResouceRecord.Type.AAAA;
-import static com.googlecode.jaev.dns.ResouceRecord.Type.CNAME;
-import static com.googlecode.jaev.dns.ResouceRecord.Type.MX;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import net.nicl.jaev.dns.Resolver;
+import net.nicl.jaev.dns.ResolverException;
+import net.nicl.jaev.dns.ResouceRecord;
+import net.nicl.jaev.mail.MailAddressFactory;
+import net.nicl.jaev.mail.MailParseException;
+import net.nicl.jaev.smtp.AccountQuery;
+import net.nicl.jaev.smtp.BasicAccountQuery;
+import net.nicl.jaev.smtp.NonQuery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -34,17 +33,11 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.googlecode.jaev.dns.Resolver;
-import com.googlecode.jaev.dns.ResolverException;
-import com.googlecode.jaev.dns.ResouceRecord;
-import com.googlecode.jaev.mail.MailAddressFactory;
-import com.googlecode.jaev.mail.MailParseException;
-import com.googlecode.jaev.smtp.AccountQuery;
-import com.googlecode.jaev.smtp.BasicAccountQuery;
-import com.googlecode.jaev.smtp.NonQuery;
+import static net.nicl.jaev.ValidatorResultCode.*;
+import static net.nicl.jaev.Validity.INVALID;
+import static net.nicl.jaev.Validity.SYNTAX;
+import static net.nicl.jaev.dns.ResouceRecord.Type.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * <p>

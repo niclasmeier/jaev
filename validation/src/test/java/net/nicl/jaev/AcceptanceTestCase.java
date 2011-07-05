@@ -1,14 +1,12 @@
-package com.googlecode.jaev;
-
-import static com.googlecode.jaev.Acceptance.ACCOUNT;
-import static com.googlecode.jaev.Acceptance.SIMPLE;
-import static com.googlecode.jaev.Acceptance.STRICT;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
-import static com.googlecode.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+package net.nicl.jaev;
 
 import org.junit.Test;
+
+import static net.nicl.jaev.Acceptance.*;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_VALID;
+import static net.nicl.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class AcceptanceTestCase {
 

@@ -7,7 +7,7 @@ options {
 }
 
 @parser::header {
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
 import java.util.List;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 }
 
 @lexer::header{ 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
 } 
 

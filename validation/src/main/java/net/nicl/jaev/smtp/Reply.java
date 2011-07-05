@@ -14,12 +14,12 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
-
-import java.util.Map;
+package net.nicl.jaev.smtp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 /**
  * The reply class contains the response from the mail server.

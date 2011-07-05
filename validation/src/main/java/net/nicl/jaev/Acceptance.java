@@ -14,10 +14,10 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static com.googlecode.jaev.ResultCode.Type.TECHNICAL;
-import static com.googlecode.jaev.ValidatorResultCode.ADDRESS_VALID;
+import static net.nicl.jaev.ResultCode.Type.TECHNICAL;
+import static net.nicl.jaev.ValidatorResultCode.ADDRESS_VALID;
 
 /**
  * The check strategy is used to check if a validation result meets the

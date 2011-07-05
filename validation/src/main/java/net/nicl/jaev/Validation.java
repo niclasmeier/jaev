@@ -14,24 +14,24 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static java.util.concurrent.TimeUnit.MINUTES;
+import net.nicl.jaev.dns.Resolver;
+import net.nicl.jaev.dns.SimpleResolver;
+import net.nicl.jaev.mail.MailAddressFactory;
+import net.nicl.jaev.mail.MailParseException;
+import net.nicl.jaev.mail.SimpleMailAddressFactory;
+import net.nicl.jaev.smtp.AccountQuery;
+import net.nicl.jaev.smtp.BasicAccountQuery;
+import net.nicl.jaev.smtp.NonQuery;
+import net.nicl.jaev.smtp.TimeoutCapableAccountQueryProxy;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import com.googlecode.jaev.dns.Resolver;
-import com.googlecode.jaev.dns.SimpleResolver;
-import com.googlecode.jaev.mail.MailAddressFactory;
-import com.googlecode.jaev.mail.MailParseException;
-import com.googlecode.jaev.mail.SimpleMailAddressFactory;
-import com.googlecode.jaev.smtp.AccountQuery;
-import com.googlecode.jaev.smtp.BasicAccountQuery;
-import com.googlecode.jaev.smtp.NonQuery;
-import com.googlecode.jaev.smtp.TimeoutCapableAccountQueryProxy;
+import static java.util.concurrent.TimeUnit.MINUTES;
 
 /**
  * The Validation class may be used to easily bootstrap a validator.

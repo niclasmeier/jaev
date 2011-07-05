@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.Validity.INVALID;
+import net.nicl.jaev.mail.MailAddressFactory;
+import net.nicl.jaev.mail.MailParseException;
 
-import com.googlecode.jaev.mail.MailAddressFactory;
-import com.googlecode.jaev.mail.MailParseException;
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.Validity.INVALID;
 
 /**
  * The abstract validator service implementation provides basic implementation

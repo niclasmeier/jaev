@@ -14,17 +14,17 @@
  * the License.
  */
 
-package com.googlecode.jaev.integration.jsf;
+package net.nicl.jaev.integration.jsf;
+
+import net.nicl.jaev.Acceptance;
+import net.nicl.jaev.Result;
+import net.nicl.jaev.Validator;
+import net.nicl.jaev.integration.ResultTranslator;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-
-import com.googlecode.jaev.Acceptance;
-import com.googlecode.jaev.Result;
-import com.googlecode.jaev.Validator;
-import com.googlecode.jaev.integration.ResultTranslator;
 
 public abstract class EmailAddressValidator implements javax.faces.validator.Validator {
 

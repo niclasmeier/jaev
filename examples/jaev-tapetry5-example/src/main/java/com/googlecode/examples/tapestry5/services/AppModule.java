@@ -16,7 +16,7 @@
 
 package com.googlecode.examples.tapestry5.services;
 
-import static com.googlecode.jaev.integration.Initialiser.defaultFromAddress;
+import static net.nicl.jaev.integration.Initialiser.defaultFromAddress;
 
 import java.io.IOException;
 
@@ -31,10 +31,10 @@ import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
 
-import com.googlecode.jaev.Validation;
-import com.googlecode.jaev.Validator;
-import com.googlecode.jaev.integration.ResultTranslator;
-import com.googlecode.jaev.integration.StandardMappingTransator;
+import net.nicl.jaev.Validation;
+import net.nicl.jaev.Validator;
+import net.nicl.jaev.integration.ResultTranslator;
+import net.nicl.jaev.integration.StandardMappingTransator;
 
 
 /**

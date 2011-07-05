@@ -13,9 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
 
-import static com.googlecode.jaev.Check.notNull;
+import net.nicl.jaev.dns.ResouceRecord.Type;
+import net.sf.ehcache.Element;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -23,9 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.ehcache.Element;
-
-import com.googlecode.jaev.dns.ResouceRecord.Type;
+import static net.nicl.jaev.Check.notNull;
 
 /**
  * DNS cache implementation based on EH cache

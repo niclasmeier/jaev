@@ -14,12 +14,12 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
+
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
 
 import java.net.InetAddress;
-
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
 
 /**
  * The account query performs the query for an e-mail account to the MTA.

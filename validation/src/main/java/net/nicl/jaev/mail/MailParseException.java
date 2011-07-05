@@ -14,10 +14,10 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.ResultCodeHelper;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.ResultCodeHelper;
 
 /**
  * This exception indicates problems creating a syntactically correct <code>MailAddress</code> instance. It contains a

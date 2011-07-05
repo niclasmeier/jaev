@@ -9,20 +9,20 @@
  * governing permissions and limitations under the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class UrlTopLevelDomainCheckerTestCase {
 
 	TopLevelDomainChecker topLevelDomainChecker = new UrlTopLevelDomainChecker(UrlTopLevelDomainChecker.class
-			.getClassLoader().getResource("com/googlecode/jaev/mail/tlds-alpha-by-domain.txt"));
+			.getClassLoader().getResource("net/nicl/jaev/mail/tlds-alpha-by-domain.txt"));
 
 	@Test
 	public void testLoadAndReload() {

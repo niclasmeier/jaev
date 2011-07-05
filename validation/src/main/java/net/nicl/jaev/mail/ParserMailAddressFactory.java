@@ -14,32 +14,28 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.Check.notBlank;
-import static com.googlecode.jaev.MailAddress.DomainFormat.IP;
-import static com.googlecode.jaev.MailAddress.DomainFormat.NAME;
-import static com.googlecode.jaev.ValidatorResultCode.EMAIL_GROUPS_NOT_SUPPORTED;
-import static com.googlecode.jaev.mail.MailResultCode.ILLEGAL_CHARACTERS;
-import static com.googlecode.jaev.mail.MailResultCode.UNKNOWN_TOPLEVEL_DOMAIN;
-import static com.googlecode.jaev.mail.Utilites.checkIpDomain;
-import static com.googlecode.jaev.mail.Utilites.isAscii;
-import static com.googlecode.jaev.mail.Utilites.trim;
-
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-
+import net.nicl.jaev.mail.EmailParser.AddressInfo;
+import net.nicl.jaev.mail.EmailParser.ParseException;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.mail.EmailParser.AddressInfo;
-import com.googlecode.jaev.mail.EmailParser.ParseException;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import static net.nicl.jaev.Check.notBlank;
+import static net.nicl.jaev.MailAddress.DomainFormat.IP;
+import static net.nicl.jaev.MailAddress.DomainFormat.NAME;
+import static net.nicl.jaev.ValidatorResultCode.EMAIL_GROUPS_NOT_SUPPORTED;
+import static net.nicl.jaev.mail.MailResultCode.ILLEGAL_CHARACTERS;
+import static net.nicl.jaev.mail.MailResultCode.UNKNOWN_TOPLEVEL_DOMAIN;
+import static net.nicl.jaev.mail.Utilites.*;
 
 /**
  * Simple implementation of the <code>MailAddressFactory</code> interface. Some
@@ -93,7 +89,7 @@ public class ParserMailAddressFactory implements MailAddressFactory {
 
 	public ParserMailAddressFactory() {
 		this(new UrlTopLevelDomainChecker(ParserMailAddressFactory.class.getClassLoader().getResource(
-				"com/googlecode/jaev/mail/tlds-alpha-by-domain.txt")));
+				"net/nicl/jaev/mail/tlds-alpha-by-domain.txt")));
 	}
 
 	public ParserMailAddressFactory(TopLevelDomainChecker topLevelDomainChecker) {

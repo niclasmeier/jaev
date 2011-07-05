@@ -14,69 +14,41 @@
  * the License.
  */
 
-package com.googlecode.jaev.dns;
+package net.nicl.jaev.dns;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import java.util.List;
+public class SimpleResolverTestCase {
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import com.googlecode.jaev.dns.Cache.Entry;
-
-public class ResolverCacheTestCase {
-
-	private static Resolver resolver;
-
-	private static Cache ehCache;
-
-	private static DnsEhCache dnsCache;
-
-	@BeforeClass
-	public static void setUp() {
-		CacheManager cacheManager = new CacheManager();
-		cacheManager.addCache("test");
-		ehCache = cacheManager.getCache("test");
-
-		dnsCache = new DnsEhCache(ehCache);
-		SimpleResolver simpleResolver = new SimpleResolver();
-		resolver = new CachingResolver(simpleResolver, dnsCache);
-
-	}
+	private final Resolver resolver = new SimpleResolver();
 
 	@Test
 	public void findMx() throws ResolverException {
-		List<ResouceRecord> records = resolver.resolve("nicl.de", ResouceRecord.Type.MX);
+		List<ResouceRecord> records = this.resolver.resolve("nicl.de", ResouceRecord.Type.MX);
 		for (ResouceRecord record : records) {
 			assertThat(record.getType(), is(ResouceRecord.Type.MX));
 		}
-
-		Entry cacheEntry = dnsCache.get("nicl.de");
-		assertThat(cacheEntry.isNotFound(), is(false));
-		assertThat(cacheEntry.getHitCount() == 1, is(true));
 
 	}
 
 	@Test
 	public void failFind() {
 		try {
-			resolver.resolve("nicl.invalid", ResouceRecord.Type.MX);
+			this.resolver.resolve("nicl.invalid", ResouceRecord.Type.MX);
 			fail("MX record found for invalid domain.");
 		}
 		catch (ResolverException e) {
 			assertThat(e.getResultCode(), is(DnsResultCode.DOMAIN_NAME_NOT_FOUND));
 
 		}
-		Entry cacheEntry = dnsCache.get("nicl.invalid");
-		assertThat(cacheEntry.isNotFound(), is(true));
-		assertThat(cacheEntry.getHitCount() == 1, is(true));
+
 	}
 
 	@Test

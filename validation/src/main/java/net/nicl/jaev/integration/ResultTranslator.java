@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev.integration;
+package net.nicl.jaev.integration;
 
 /**
  * The result translator translates the quite complex state of the result
- * toimport com.googlecode.jaev.Result; message lookup.
+ * toimport net.nicl.jaev.Result; message lookup.
  */
-import com.googlecode.jaev.Result;
+import net.nicl.jaev.Result;
 
 public interface ResultTranslator {
 

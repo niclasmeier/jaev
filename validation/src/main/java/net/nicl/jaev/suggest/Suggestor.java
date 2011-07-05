@@ -10,11 +10,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.jaev.suggest;
+package net.nicl.jaev.suggest;
+
+import net.nicl.jaev.MailAddress;
 
 import java.util.SortedSet;
-
-import com.googlecode.jaev.MailAddress;
 
 /**
  * The <code>Suggestor</code> suggests e-mail addresses based on a template

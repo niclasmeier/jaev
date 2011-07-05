@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
 /**
  * <p>

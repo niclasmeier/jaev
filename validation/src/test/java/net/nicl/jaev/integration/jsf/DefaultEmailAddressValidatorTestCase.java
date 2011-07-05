@@ -1,17 +1,6 @@
-package com.googlecode.jaev.integration.jsf;
+package net.nicl.jaev.integration.jsf;
 
-import static com.googlecode.jaev.integration.Initialiser.defaultFromAddress;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import java.util.Locale;
-
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
-
+import net.nicl.jaev.mail.MailParseException;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
@@ -23,7 +12,16 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.mail.MailParseException;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+import java.util.Locale;
+
+import static net.nicl.jaev.integration.Initialiser.defaultFromAddress;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 @RunWith(JMock.class)
 public final class DefaultEmailAddressValidatorTestCase {

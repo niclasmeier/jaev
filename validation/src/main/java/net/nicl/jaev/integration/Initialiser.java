@@ -14,13 +14,13 @@
  * the License.
  */
 
-package com.googlecode.jaev.integration;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+package net.nicl.jaev.integration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 public final class Initialiser {
 

@@ -14,30 +14,26 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
-import static com.googlecode.jaev.Validity.DOMAIN;
-import static com.googlecode.jaev.smtp.Idiom.HELO;
-import static com.googlecode.jaev.smtp.Idiom.MAIL;
-import static com.googlecode.jaev.smtp.Idiom.RECIPIENT_TO;
-import static com.googlecode.jaev.smtp.Idiom.START;
-import static com.googlecode.jaev.smtp.SmtpResultCode.IO_ERROR_DURING_MTA_CONVERSATION;
-import static com.googlecode.jaev.smtp.SmtpResultCode.MTA_NOT_RESPONDING;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import net.nicl.jaev.MailAddress;
+import net.nicl.jaev.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.InetAddress;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.googlecode.jaev.MailAddress;
-import com.googlecode.jaev.Result;
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
+import static net.nicl.jaev.Validity.DOMAIN;
+import static net.nicl.jaev.smtp.Idiom.*;
+import static net.nicl.jaev.smtp.SmtpResultCode.IO_ERROR_DURING_MTA_CONVERSATION;
+import static net.nicl.jaev.smtp.SmtpResultCode.MTA_NOT_RESPONDING;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * This basic account query implementation performs the query to an SMTP mail

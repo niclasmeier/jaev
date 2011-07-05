@@ -14,12 +14,12 @@
  * the License.
  */
 
-package com.googlecode.jaev.mail;
+package net.nicl.jaev.mail;
 
-import static com.googlecode.jaev.ResultCode.Type.LOGICAL;
+import net.nicl.jaev.ResultCode;
+import net.nicl.jaev.ResultCodeHelper;
 
-import com.googlecode.jaev.ResultCode;
-import com.googlecode.jaev.ResultCodeHelper;
+import static net.nicl.jaev.ResultCode.Type.LOGICAL;
 
 /**
  * Common class to provide result codes related to e-mail address creation

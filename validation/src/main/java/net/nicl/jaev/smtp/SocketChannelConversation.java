@@ -14,9 +14,10 @@
  * the License.
  */
 
-package com.googlecode.jaev.smtp;
+package net.nicl.jaev.smtp;
 
-import static com.googlecode.jaev.Check.notBlank;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -29,8 +30,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static net.nicl.jaev.Check.notBlank;
 
 /**
  * The socket channel conversation implements a conversation to a SMTP server

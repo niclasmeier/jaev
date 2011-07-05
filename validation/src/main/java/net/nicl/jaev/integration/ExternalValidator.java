@@ -1,6 +1,6 @@
-package com.googlecode.jaev.integration;
+package net.nicl.jaev.integration;
 
-import com.googlecode.jaev.MailAddress;
+import net.nicl.jaev.MailAddress;
 
 public interface ExternalValidator {
 

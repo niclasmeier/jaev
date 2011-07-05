@@ -14,36 +14,25 @@
  * the License.
  */
 
-package com.googlecode.jaev;
+package net.nicl.jaev;
 
-import static com.googlecode.jaev.Check.notNull;
-import static com.googlecode.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
-import static com.googlecode.jaev.ValidatorResultCode.VALIDATION_TIMED_OUT;
-import static com.googlecode.jaev.Validity.SYNTAX;
-import static java.util.concurrent.TimeUnit.MINUTES;
-
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
+import net.nicl.jaev.dns.Resolver;
+import net.nicl.jaev.dns.SimpleResolver;
+import net.nicl.jaev.mail.MailAddressFactory;
+import net.nicl.jaev.mail.MailParseException;
+import net.nicl.jaev.mail.SimpleMailAddressFactory;
+import net.nicl.jaev.smtp.AccountQuery;
+import net.nicl.jaev.smtp.BasicAccountQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.jaev.dns.Resolver;
-import com.googlecode.jaev.dns.SimpleResolver;
-import com.googlecode.jaev.mail.MailAddressFactory;
-import com.googlecode.jaev.mail.MailParseException;
-import com.googlecode.jaev.mail.SimpleMailAddressFactory;
-import com.googlecode.jaev.smtp.AccountQuery;
-import com.googlecode.jaev.smtp.BasicAccountQuery;
+import java.util.concurrent.*;
+
+import static net.nicl.jaev.Check.notNull;
+import static net.nicl.jaev.ValidatorResultCode.GENERAL_VALIDATION_ERROR;
+import static net.nicl.jaev.ValidatorResultCode.VALIDATION_TIMED_OUT;
+import static net.nicl.jaev.Validity.SYNTAX;
+import static java.util.concurrent.TimeUnit.MINUTES;
 
 /**
  * <p>
