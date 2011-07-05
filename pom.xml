@@ -28,9 +28,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/jaev/jaev.git</connection>
-        <developerConnection>scm:git:git://github.com/jaev/jaev.git</developerConnection>
-        <url>http://github.com/jaev/jaev</url>
+        <connection>scm:git:git://github.com/niclasmeier/jaev.git</connection>
+        <developerConnection>scm:git:git://github.com/niclasmeier/jaev.git</developerConnection>
+        <url>http://github.com/niclasmeier/jaev</url>
     </scm>
 
     <developers>
