@@ -1,0 +1,20 @@
+= Motives =
+The validity of e-mail addresses has grown a very important requirement to modern applications. Even lots of offline processes require nowadays e-mail address to communicate easily with the customer if required. 
+
+= Function =
+The jaev framework offers facilites to check if an e-mail address is valid and create sophisticated messages for the user response.
+
+The validation process contains three different steps.
+
+  # Checking the syntactical validity of a e-mail address - _Is the syntax Ok? _
+  # Check the domain or IP of the e-mail address - _Does the domain/IP exist?_
+  # Connect to the message transfer agent (MTA/mail server) related to the destination domain and check if the account is valid. - _ Does the e-mail account exist?_
+
+Unlike common e-mail address validators the jaev framework wants to offer an open infrastructure, so that you can customize the validation process regarding to your requirements. Furthermore the result wont consits only of a boolean value, you will get a detailed result to generate qualified messages. Furthermore the jaev framework offers basic strategies for the acceptance process of an e-mail and the message generation.
+ 
+For a better overview  [Function how a validator service works] check out the [Function function page] or the [Examples examples page]. There is a page with details for the [Integration integration into a JSF or a Tapestry 5 application] too.
+
+= Road Map =
+After reaching the first milestone by deploying the first release, there is still loads of work to do. For more detailed informations check out the [RoadMap]
+
+If you have any ideas or if you are missing features, please post it into the google group or open an issue on the issue tracking system.
