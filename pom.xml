@@ -283,7 +283,7 @@
         <site>
             <id>private-site</id>
             <name>jaev private site repository</name>
-            <url>scpexe://root@www.nicl.net/var/www/maven</url>
+            <url>scpexe://root@www.nicl.net/var/www/maven/net/nicl/jaev</url>
         </site>
     </distributionManagement>
 
