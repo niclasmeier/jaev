@@ -6,9 +6,9 @@ The jaev framework offers facilites to check if an e-mail address is valid and c
 
 The validation process contains three different steps.
 
-  # Checking the syntactical validity of a e-mail address - _Is the syntax Ok? _
-  # Check the domain or IP of the e-mail address - _Does the domain/IP exist?_
-  # Connect to the message transfer agent (MTA/mail server) related to the destination domain and check if the account is valid. - _ Does the e-mail account exist?_
+  # Checking the syntactical validity of a e-mail address - //Is the syntax Ok? //
+  # Check the domain or IP of the e-mail address - //Does the domain/IP exist? //
+  # Connect to the message transfer agent (MTA/mail server) related to the destination domain and check if the account is valid. - // Does the e-mail account exist? //
 
 Unlike common e-mail address validators the jaev framework wants to offer an open infrastructure, so that you can customize the validation process regarding to your requirements. Furthermore the result wont consits only of a boolean value, you will get a detailed result to generate qualified messages. Furthermore the jaev framework offers basic strategies for the acceptance process of an e-mail and the message generation.
  
