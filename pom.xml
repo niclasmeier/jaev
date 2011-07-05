@@ -28,8 +28,8 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/niclasmeier/jaev.git</connection>
-        <developerConnection>scm:git:git://github.com/niclasmeier/jaev.git</developerConnection>
+        <connection>scm:git:git@github.com:niclasmeier/jaev.git</connection>
+        <developerConnection>scm:git:git@github.com:niclasmeier/jaev.git</developerConnection>
         <url>http://github.com/niclasmeier/jaev</url>
     </scm>
 
