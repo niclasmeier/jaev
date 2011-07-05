@@ -2,14 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.nicl.jaev</groupId>
 	<artifactId>validation</artifactId>
-	<version>1.1.7</version>
+	<version>1.1.7-SNAPSHOT</version>
 	<name>validation</name>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>net.nicl.jaev</groupId>
 		<artifactId>jaev</artifactId>
-		<version>1.1.7</version>
+		<version>1.1.7-SNAPSHOT</version>
 	</parent>
 
 	<scm>
